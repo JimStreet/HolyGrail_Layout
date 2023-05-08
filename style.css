@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* schriftart wird importiert in dem moment in dem die seite aufgerufen wird */
+
 /* Universal Selector */
 * {
     padding: 0;
@@ -7,51 +10,266 @@
 :root {
     /* arbeitet/definiert global */
     --divsBG: rgb(255, 225, 93);
-    /* hier wird eine variable definiert */
+    /* hier wird eine variable definiert; variablen fangen immer mit -- an */
+    --c1: #FADADD;
+    /* sehr hell */
+    --c2: #f31111;
+    --c3: #eedf0d;
+    --c4: #b011f0;
+    --c5: #0b1af0;
+    --c6: #1B2631;
+    /* sehr dunkel */
 }
 
 .el {
     background: var(--divsBG);
+    font-family: 'Open Sans', sans-serif;
 }
 
-.body {
-    /* background: red;  (der background war rot also habe wir dies gelöscht und als kommentar hier gelassen)*/
-    height: 100vh;
-    display: grid;
-    /* grid layout = alle elemente bekommen gleich viel fläche von der Webseite verteilt (untereinnander aufgelistet; benutzt ganze breite) */
-    grid-template-columns: repeat(12, 1fr);
-    /* colums sind die spalten pro 1fr wird eine neue spalte erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide spalten bekommen 50% der breite der Seite*/
-    grid-template-rows: repeat(12, 1fr);
-    /* rows sind die zeilen pro 1fr wird eine neue zeile erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide zeilen bekommen 50% der höhe*/
+
+/*! MediaQuery für unterschiedliche Gerätebreiten, die aufgrund der Tatsache ermittelt werden, dass der Internet-Browser die Geometrie Ihres Bildschirms kennt*/
+
+/* Pc/Laptop */
+
+@media screen and (min-width:1025px) {
+    .body {
+        /* background: red;  (der background war rot also habe wir dies gelöscht und als kommentar hier gelassen)*/
+        height: 100vh;
+        display: grid;
+        /* grid layout = alle elemente bekommen gleich viel fläche von der Webseite verteilt (untereinnander aufgelistet; benutzt ganze breite) */
+        grid-template-columns: repeat(12, 1fr);
+        /* colums sind die spalten pro 1fr wird eine neue spalte erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide spalten bekommen 50% der breite der Seite*/
+        grid-template-rows: repeat(12, 1fr);
+        /* rows sind die zeilen pro 1fr wird eine neue zeile erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide zeilen bekommen 50% der höhe*/
+    }
+
+    .NavBar {
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und verlauf 12te spalten lang */
+        grid-row: 1 / span 1;
+        /* fang in der ersten zeile an und eine spalte lang */
+        display: flex;
+        /*flex layout*/
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .navUL {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .Footer {
+        /* hier habe ich es verstanden */
+        /*----------------------------------------------------------*/
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und dupliziere dich 12 mal ; die erste spalte gehört mit zu den dupplikaten*/
+        grid-row: 12 / span 1;
+        /* fang in der 12te zeile an und dupliziere dich ein mal ; die erste zeile gehört mit zu den dupplikaten*/
+        text-align: center;
+    }
+
+    .LeftPanel {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 10;
+    }
+
+    .RightPanel {
+        grid-column: 11 / span 2;
+        grid-row: 2 / span 10;
+    }
+
+    .Content {
+        grid-column: 3 / span 8;
+        grid-row: 2 / span 10;
+        background: radial-gradient(ellipse, var(--c1), var(--c2), var(--c3)), radial-gradient(ellipse at top, var(--c4), var(--c5), var(--c6), transparent);
+        /* radial ist kreisläufig und gradient ist ein farbverlauf, ekkipse ist die form*/
+        background-size: 400% 400%;
+        -webkit-animation: prettyAnimatedGradient 20s ease-in-out infinite;
+        /*animatonsname, animations dauer, animations art, wie oft die animation widerholt wird*/
+    }
+
+    @-webkit-keyframes prettyAnimatedGradient {
+
+        /*am besten endet die animation dort wo sie anfängt*/
+        0% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 0% = 1s; prozente sind koordinaten erst x dann y*/
+            background-position: 0% 0%;
+        }
+
+        50% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 50% = 10s; prozente sind koordinaten erst x dann y*/
+            background-position: 50% 50%;
+        }
+
+        100% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 100% = 20s; prozente sind koordinaten erst x dann y*/
+            background-position: 100% 100%;
+        }
+    }
 }
 
-.NavBar {
-    grid-column: 1 / span 12;
-    /* fang in der ersten spalte an und verlauf 12te spalten lang */
-    grid-row: 1 / span 1;
-    /* fang in der ersten zeile an und eine spalte lang */
+/* Tablet */
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .body {
+        /* background: red;  (der background war rot also habe wir dies gelöscht und als kommentar hier gelassen)*/
+        height: 100vh;
+        display: grid;
+        /* grid layout = alle elemente bekommen gleich viel fläche von der Webseite verteilt (untereinnander aufgelistet; benutzt ganze breite) */
+        grid-template-columns: repeat(12, 1fr);
+        /* colums sind die spalten pro 1fr wird eine neue spalte erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide spalten bekommen 50% der breite der Seite*/
+        grid-template-rows: repeat(12, 1fr);
+        /* rows sind die zeilen pro 1fr wird eine neue zeile erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide zeilen bekommen 50% der höhe*/
+    }
+
+    .NavBar {
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und verlauf 12te spalten lang */
+        grid-row: 1 / span 1;
+        /* fang in der ersten zeile an und eine spalte lang */
+        display: flex;
+        /*flex layout*/
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .navUL {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .Footer {
+        /* hier habe ich es verstanden */
+        /*----------------------------------------------------------*/
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und dupliziere dich 12 mal ; die erste spalte gehört mit zu den dupplikaten*/
+        grid-row: 12 / span 1;
+        /* fang in der 12te zeile an und dupliziere dich ein mal ; die erste zeile gehört mit zu den dupplikaten*/
+        text-align: center;
+    }
+
+    .LeftPanel {
+        grid-column: 1 / span 3;
+        grid-row: 2 / span 10;
+    }
+
+    .RightPanel {
+        grid-column: 10 / span 3;
+        grid-row: 2 / span 10;
+    }
+
+    .Content {
+        grid-column: 4 / span 6;
+        grid-row: 2 / span 10;
+        background: radial-gradient(ellipse, var(--c1), var(--c2), var(--c3)), radial-gradient(ellipse at top, var(--c4), var(--c5), var(--c6), transparent);
+        /* radial ist kreisläufig und gradient ist ein farbverlauf, ekkipse ist die form*/
+        background-size: 400% 400%;
+        -webkit-animation: prettyAnimatedGradient 20s ease-in-out infinite;
+        /*animatonsname, animations dauer, animations art, wie oft die animation widerholt wird*/
+    }
+
+    @-webkit-keyframes prettyAnimatedGradient {
+
+        /*am besten endet die animation dort wo sie anfängt*/
+        0% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 0% = 1s; prozente sind koordinaten erst x dann y*/
+            background-position: 0% 0%;
+        }
+
+        50% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 50% = 10s; prozente sind koordinaten erst x dann y*/
+            background-position: 50% 50%;
+        }
+
+        100% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 100% = 20s; prozente sind koordinaten erst x dann y*/
+            background-position: 100% 100%;
+        }
+    }
 }
 
-.Footer {
-    /* hier habe ich es verstanden */
-    /*----------------------------------------------------------*/
-    grid-column: 1 / span 12;
-    /* fang in der ersten spalte an und dupliziere dich 12 mal ; die erste spalte gehört mit zu den dupplikaten*/
-    grid-row: 12 / span 1;
-    /* fang in der 12te zeile an und dupliziere dich ein mal ; die erste zeile gehört mit zu den dupplikaten*/
-}
+/* Phones */
 
-.LeftPanel {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 10;
-}
+@media screen and (max-width:768px) {
+    .body {
+        /* background: red;  (der background war rot also habe wir dies gelöscht und als kommentar hier gelassen)*/
+        height: 100vh;
+        display: grid;
+        /* grid layout = alle elemente bekommen gleich viel fläche von der Webseite verteilt (untereinnander aufgelistet; benutzt ganze breite) */
+        grid-template-columns: repeat(12, 1fr);
+        /* colums sind die spalten pro 1fr wird eine neue spalte erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide spalten bekommen 50% der breite der Seite*/
+        grid-template-rows: repeat(12, 1fr);
+        /* rows sind die zeilen pro 1fr wird eine neue zeile erstellt, repeat ist eine funktion 12 mal 1fr, 1fr und 1fr bedeutet beide zeilen bekommen 50% der höhe*/
+    }
 
-.RightPanel {
-    grid-column: 11 / span 2;
-    grid-row: 2 / span 10;
-}
+    .NavBar {
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und verlauf 12te spalten lang */
+        grid-row: 1 / span 1;
+        /* fang in der ersten zeile an und eine spalte lang */
+        display: flex;
+        /*flex layout*/
+        justify-content: space-around;
+        align-items: center;
+    }
 
-.Content {
-    grid-column: 3 / span 8;
-    grid-row: 2 / span 10;
+    .navUL {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .Footer {
+        /* hier habe ich es verstanden */
+        /*----------------------------------------------------------*/
+        grid-column: 1 / span 12;
+        /* fang in der ersten spalte an und dupliziere dich 12 mal ; die erste spalte gehört mit zu den dupplikaten*/
+        grid-row: 12 / span 1;
+        /* fang in der 12te zeile an und dupliziere dich ein mal ; die erste zeile gehört mit zu den dupplikaten*/
+        text-align: center;
+    }
+
+    .LeftPanel {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 5;
+        background-color: red;
+    }
+
+    .RightPanel {
+        grid-column: 1 / span 2;
+        grid-row: 7 / span 6;
+        background-color: blue;
+    }
+
+    .Content {
+        grid-column: 3 / span 10;
+        grid-row: 2 / span 10;
+        background: radial-gradient(ellipse, var(--c1), var(--c2), var(--c3)), radial-gradient(ellipse at top, var(--c4), var(--c5), var(--c6), transparent);
+        /* radial ist kreisläufig und gradient ist ein farbverlauf, ekkipse ist die form*/
+        background-size: 400% 400%;
+        -webkit-animation: prettyAnimatedGradient 20s ease-in-out infinite;
+        /*animatonsname, animations dauer, animations art, wie oft die animation widerholt wird*/
+    }
+
+    @-webkit-keyframes prettyAnimatedGradient {
+
+        /*am besten endet die animation dort wo sie anfängt*/
+        0% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 0% = 1s; prozente sind koordinaten erst x dann y*/
+            background-position: 0% 0%;
+        }
+
+        50% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 50% = 10s; prozente sind koordinaten erst x dann y*/
+            background-position: 50% 50%;
+        }
+
+        100% {
+            /*die prozentzahl sagt wann innerhalt der 20s sich die antimation befindet also 100% = 20s; prozente sind koordinaten erst x dann y*/
+            background-position: 100% 100%;
+        }
+    }
 }
